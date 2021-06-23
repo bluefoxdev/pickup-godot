@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://mainscene2.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.7693, 31.1454 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 487.047, 275.565 )
+gravity_scale = 3.0
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 587.285, 274.133 )
+gravity_scale = 3.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 504.901, 577.429 )
+scale = Vector2( 20, 1 )
+
+[node name="icon" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0.368561, -2.11632 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -2.38393 )
+shape = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -25.6393, -43.2574, -25.4998, -587.212, 26.1061, -581.633, 25.8272, -37.6783, 30.9878, -34.8889, 30.1509, -654.16, -28.0104, -640.213, -27.8709, -48.8364 )
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 852.776
+margin_top = 44.7089
+margin_right = 927.776
+margin_bottom = 96.7089
+text = "zero g"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 68.4775
+margin_top = 233.826
+margin_right = 142.477
+margin_bottom = 264.826
+rect_scale = Vector2( 2, 2 )
+text = "demo by 
+bluefox dev"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]
